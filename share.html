@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shared link</title>
+<style>body{font:16px system-ui;background:#111;color:#eee;margin:0;padding:24px}pre{white-space:pre-wrap;word-break:break-all;background:#222;padding:12px;border-radius:8px}</style>
+</head><body>
+<h1>Received</h1>
+<pre id="out"></pre>
+<script>
+const p = new URLSearchParams(location.search);
+const raw = [p.get('url'), p.get('text'), p.get('title')].filter(Boolean).join(' ');
+const m = raw.match(/https?:\/\/(?:www\.|m\.)?9gag\.com\/gag\/[A-Za-z0-9]+/);
+document.getElementById('out').textContent =
+  'title: ' + (p.get('title')||'') + '\ntext:  ' + (p.get('text')||'') + '\nurl:   ' + (p.get('url')||'') +
+  '\n\n9GAG link found: ' + (m ? m[0] : '(none)');
+</script>
+</body></html>
